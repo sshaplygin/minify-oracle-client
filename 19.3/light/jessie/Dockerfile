@@ -1,10 +1,10 @@
 FROM debian:8-slim
 
-ENV ORACLE_CLIENT_VERSION 12.1 
-ENV ORACLE_CLIENT_FULL_VERSION 12.1.0.2.0
-ENV ORACLE_CLIENT_TYPE basic
+ENV ORACLE_CLIENT_TYPE basiclite
+ENV ORACLE_CLIENT_VERSION 19.3
+ENV ORACLE_CLIENT_FULL_VERSION 19.3.0.0.0
 ENV ZIP_NAME instantclient-$ORACLE_CLIENT_TYPE-linux.x64-$ORACLE_CLIENT_FULL_VERSION.zip 
-ENV INSTANT_DIR instantclient_12_1
+ENV INSTANT_DIR instantclient_19_3
 ENV LD_LIBRARY_PATH /usr/lib:/usr/local/lib:/usr/lib/oracle/
 
 RUN apt-get update && apt-get install -y libaio1 unzip wget

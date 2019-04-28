@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y libaio1 unzip wget
 
 RUN mkdir /opt/oracle && cd /opt/oracle
 
-RUN wget https://raw.githubusercontent.com/mrfoe7/minify-oracle-client/master/12.1/$ZIP_NAME
+RUN wget https://raw.githubusercontent.com/mrfoe7/minify-oracle-client/master/$ORACLE_CLIENT_VERSION/$ZIP_NAME
 
 RUN unzip $ZIP_NAME
 RUN mv $INSTANT_DIR /usr/lib/oracle/ && rm -rf /opt/oracle
