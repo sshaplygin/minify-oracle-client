@@ -3,7 +3,7 @@ FROM debian:8-slim
 RUN apt-get update 
 RUN apt-get install --no-cache -y libaio1
 
-COPY installclient-basic-
+
 
 ENV LD_LIBRARY_PATH /usr/lib:/usr/local/lib:/usr/lib/oracle/
 
