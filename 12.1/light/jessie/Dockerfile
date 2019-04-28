@@ -7,8 +7,7 @@ ENV ZIP_NAME instantclient-$ORACLE_CLIENT_TYPE-linux.x64-$ORACLE_CLIENT_FULL_VER
 ENV INSTANT_DIR instantclient_12_1
 ENV LD_LIBRARY_PATH /usr/lib:/usr/local/lib:/usr/lib/oracle/
 
-RUN apt-get update 
-RUN apt-get install -y libaio1 unzip wget
+RUN apt-get update && apt-get install -y libaio1 unzip wget
 
 RUN mkdir /opt/oracle && cd /opt/oracle
 
