@@ -17,7 +17,7 @@ Free Oracle Database tools, libraries for building and connecting client applica
 
 ## Tags
 
-* `12.1`
+* `12.1` [12.1](https://github.com/mrfoe7/minify-oracle-client/tree/master/12.1)
     * `basic` [12.1/basic](https://github.com/mrfoe7/minify-oracle-client/tree/master/12.1/basic)
         * `debian/jessie` [jessie/Dockerfile](https://github.com/mrfoe7/minify-oracle-client/blob/master/12.1/basic/jessie/Dockerfile)
         * `debian/stretch` [stretch/Dockerfile](https://github.com/mrfoe7/minify-oracle-client/blob/master/12.1/basic/stretch/Dockerfile)
