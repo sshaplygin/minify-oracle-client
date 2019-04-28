@@ -1,11 +1,23 @@
 FROM debian:8-slim
 
-RUN apt-get update 
-RUN apt-get install --no-cache -y libaio1
-
-COPY installclient-basic-
-
+ENV ORACLE_CLIENT_VERSION 12.1 
+ENV ORACLE_CLIENT_FULL_VERSION 12.1.0.2.0
+ENV ORACLE_CLIENT_TYPE basic
+ENV ZIP_NAME instantclient-$ORACLE_CLIENT_TYPE-linux.x64-$ORACLE_CLIENT_FULL_VERSION.zip 
+ENV INSTANT_DIR instantclient_12_1
 ENV LD_LIBRARY_PATH /usr/lib:/usr/local/lib:/usr/lib/oracle/
+
+RUN apt-get update 
+RUN apt-get install -y libaio1 unzip wget
+
+RUN mkdir /opt/oracle && cd /opt/oracle
+
+RUN wget https://raw.githubusercontent.com/mrfoe7/minify-oracle-client/master/12.1/instantclient-basiclite-linux.x64-12.1.0.2.0.zip
+
+RUN unzip $ZIP_NAME
+RUN mv $INSTANT_DIR /usr/lib/oracle/ && rm -rf /opt/oracle
+
+RUN apt-get purge -y --auto-remove unzip wget
 
 RUN apt-get clean --dry-run
 

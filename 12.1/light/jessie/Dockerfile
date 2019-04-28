@@ -10,9 +10,9 @@ ENV LD_LIBRARY_PATH /usr/lib:/usr/local/lib:/usr/lib/oracle/
 RUN apt-get update 
 RUN apt-get install -y libaio1 unzip wget
 
-WORKDIR /opt/oracle
+RUN mkdir /opt/oracle && cd /opt/oracle
 
-RUN wget https://raw.githubusercontent.com/mrfoe7/minify-oracle-client/master/$ORACLE_CLEINT_VERSION/$ZIP_NAME
+RUN wget https://raw.githubusercontent.com/mrfoe7/minify-oracle-client/master/12.1/instantclient-basiclite-linux.x64-12.1.0.2.0.zip
 
 RUN unzip $ZIP_NAME
 RUN mv $INSTANT_DIR /usr/lib/oracle/ && rm -rf /opt/oracle
@@ -23,5 +23,3 @@ RUN apt-get clean --dry-run
 
 RUN ln -s /usr/lib/oracle/libclntsh.so.12.1 /usr/lib/oracle/libclntsh.so
 RUN ln -s /usr/lib/oracle/libocci.so.12.1 /usr/lib/oracle/libocci.so
-
-CMD ["ping", "localhost"]
