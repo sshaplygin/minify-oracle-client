@@ -7,8 +7,12 @@ ENV ZIP_NAME instantclient-$ORACLE_CLIENT_TYPE-linux.x64-$ORACLE_CLIENT_FULL_VER
 ENV INSTANT_DIR instantclient_12_1
 ENV LD_LIBRARY_PATH /usr/lib:/usr/local/lib:/usr/lib/oracle/
 
-RUN apt-get update && apt-get install -y libaio1 unzip wget
-
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libaio1 \
+    unzip \ 
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+    
 RUN mkdir /opt/oracle && cd /opt/oracle
 
 RUN wget https://raw.githubusercontent.com/mrfoe7/minify-oracle-client/master/$ORACLE_CLIENT_VERSION/$ZIP_NAME
