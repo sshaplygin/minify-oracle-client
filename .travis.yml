@@ -1,0 +1,57 @@
+language: bash
+services: docker
+
+matrix:
+  include:
+    - oc: linux
+      env: VERSION=12.1 INSTANT_TYPE=basic VARIANT=stretch
+    - oc: linux
+      env: VERSION=12.1 INSTANT_TYPE=basic VARIANT=jessei
+    - oc: linux
+      env: VERSION=12.1 INSTANT_TYPE=light VARIANT=stretch
+    - oc: linux
+      env: VERSION=12.1 INSTANT_TYPE=light VARIANT=jessei
+    - oc: linux
+      env: VERSION=12.2 INSTANT_TYPE=basic VARIANT=stretch
+    - oc: linux
+      env: VERSION=12.2 INSTANT_TYPE=basic VARIANT=jessei
+    - oc: linux
+      env: VERSION=12.2 INSTANT_TYPE=light VARIANT=stretch
+    - oc: linux
+      env: VERSION=12.2 INSTANT_TYPE=light VARIANT=jessei
+    - oc: linux
+      env: VERSION=18.5 INSTANT_TYPE=basic VARIANT=stretch
+    - oc: linux
+      env: VERSION=18.5 INSTANT_TYPE=basic VARIANT=jessei
+    - oc: linux
+      env: VERSION=18.5 INSTANT_TYPE=light VARIANT=stretch
+    - oc: linux
+      env: VERSION=18.5 INSTANT_TYPE=light VARIANT=jessei
+    - oc: linux
+      env: VERSION=19.3 INSTANT_TYPE=basic VARIANT=stretch
+    - oc: linux
+      env: VERSION=19.3 INSTANT_TYPE=basic VARIANT=jessei
+    - oc: linux
+      env: VERSION=19.3 INSTANT_TYPE=light VARIANT=stretch
+    - oc: linux
+      env: VERSION=19.3 INSTANT_TYPE=light VARIANT=jessei
+
+install:
+  - git clone https://github.com/mrfoe7/minify-oracle-client.git
+  
+
+before_script:
+  - env | sort
+  - cd "$VERSION"
+  - image="mrfoe7/minify-oracle-client:$VERSION-$INSTANT_TYPE-$VARIANT"
+
+script:
+  - |
+    (
+      set -Eeuo pipefail
+      ser -x 
+      docker build -t "$image" .
+    )
+
+after_script:
+  - docker images
