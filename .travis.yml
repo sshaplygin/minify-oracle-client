@@ -49,7 +49,7 @@ script:
   - |
     (
       set -Eeuo pipefail
-      ser -x 
+      set -x 
       docker build -t "$image" .
     )
 
