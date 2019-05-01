@@ -10,6 +10,7 @@ That consist of two version oracle instant client on basic and light version.
 Support only x64 arch, linux os containers and oracle instant client version 12.1
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+[![Build Status](https://travis-ci.org/mrfoe7/minify-oracle-client.svg?branch=master)](https://travis-ci.org/mrfoe7/minify-oracle-client)
 
 ## What is Oracle Instant client?
 
