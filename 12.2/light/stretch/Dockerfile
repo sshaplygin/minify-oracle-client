@@ -8,7 +8,11 @@ ENV INSTANT_DIR instantclient_12_2
 
 ENV LD_LIBRARY_PATH /usr/lib:/usr/local/lib:/usr/lib/oracle/
 
-RUN apt-get update && apt-get install -y libaio1 unzip wget
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libaio1 \
+    unzip \ 
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /opt/oracle && cd /opt/oracle
 
